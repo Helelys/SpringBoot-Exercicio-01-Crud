@@ -30,4 +30,13 @@ public class ProdutoController {
     public ResponseEntity<Void> deletarProdutoPorId(@PathVariable String id) {
         return produtoService.deletarProdutoPorId(id);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> alterarProduto(@PathVariable String id, @RequestBody Produto produto) {
+        try {
+            return produtoService.alterarProduto(id, produto);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
